@@ -59,8 +59,9 @@ public class ReceiptUI extends javax.swing.JFrame {
         jComboBoxSort = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jTextSearch = new javax.swing.JTextField();
-        jButtonOpen = new javax.swing.JButton();
+        jButtonMenu = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
+        jButtonOpen1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -85,14 +86,14 @@ public class ReceiptUI extends javax.swing.JFrame {
         jTextSearch.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
         getContentPane().add(jTextSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 260, 30));
 
-        jButtonOpen.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonOpen.setText("Open");
-        jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMenu.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
+        jButtonMenu.setText("Menu");
+        jButtonMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOpenActionPerformed(evt);
+                jButtonMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonOpen, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 170, 40));
+        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 350, 40));
 
         jButtonDelete.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonDelete.setText("Delete");
@@ -103,12 +104,22 @@ public class ReceiptUI extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 170, 40));
 
+        jButtonOpen1.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
+        jButtonOpen1.setText("Open");
+        jButtonOpen1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOpen1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonOpen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 170, 40));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
-        DataStructures.receipts.displaySelected(receiptList.getSelectedIndex());
-    }//GEN-LAST:event_jButtonOpenActionPerformed
+    private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
+        controller.closing(this);
+        controller.menu();
+    }//GEN-LAST:event_jButtonMenuActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         DataStructures.receipts.deleteSelected(receiptList.getSelectedIndex(),
@@ -119,9 +130,14 @@ public class ReceiptUI extends javax.swing.JFrame {
         controller.closing(this);
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButtonOpen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpen1ActionPerformed
+        controller.displaySelectedReceipt();
+    }//GEN-LAST:event_jButtonOpen1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDelete;
-    private javax.swing.JButton jButtonOpen;
+    private javax.swing.JButton jButtonMenu;
+    private javax.swing.JButton jButtonOpen1;
     private javax.swing.JComboBox<String> jComboBoxSort;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;

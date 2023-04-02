@@ -7,6 +7,7 @@ import data.DataStructures;
 import data.Receipt;
 import java.awt.List;
 import javax.swing.JFrame;
+import userinterfaces.MenuUI;
 import userinterfaces.ViewReceiptUI;
 
 /**
@@ -122,5 +123,12 @@ public class ViewReceiptController {
     public void closing(JFrame frame) {
         DataStructures.receipts.closing();
         frame.dispose();
+    }
+    
+    /**
+     * Instantiates a new menu UI
+     */
+    public void menu() {
+        new MenuUI();
     }
 }
