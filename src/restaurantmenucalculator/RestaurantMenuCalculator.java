@@ -3,6 +3,7 @@
 package restaurantmenucalculator;
 
 /** Required imports */
+import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
 import data.DataStructures;
 import userinterfaces.LoginUI;
 
@@ -21,7 +22,18 @@ public class RestaurantMenuCalculator {
      */
     public static void main(String[] args) {
         new DataStructures();
-        new LoginUI();
+        System.out.println("ooo");
+        try {
+            // Sets the colour palette for all JFrames (UI)
+            FlatArcOrangeIJTheme.setup();
+        } catch (Exception e) {
+        }
+        /* Creates and displays the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginUI();
+            }
+        });
     }
     
 }

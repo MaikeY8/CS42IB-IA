@@ -534,10 +534,10 @@ public class OrderController {
                 + "\nNumber: " + number
                 + "\nAddress: " + address
                 + "\n-------------------------------------------------------"
-                + "------------------------"
+                + "--------------"
                 + "\nItem\t\tAmount\tPrice"
                 + "\n-------------------------------------------------------"
-                + "------------------------\n";
+                + "--------------\n";
         // Loops through all the rows (items) on the table
         for (int i = 0; i < jTableOrder.getRowCount(); i++) {
             // Gets name of row (item)
@@ -559,7 +559,7 @@ public class OrderController {
         }
         // Formats the bottom portion of the receipt with the costs of the order
         content += "--------------------------------------------------------"
-                + "------------------------"
+                + "-------------"
                 + "\nPayment Method: " + payment
                 + "\nSub-Total:\t\t\t" + subTotal
                 + "\nTax:\t\t\t" + tax

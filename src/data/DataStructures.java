@@ -42,12 +42,17 @@ public class DataStructures {
      * instantiating any other relevant classes
      */
     public DataStructures() {
+        // instantiates receiptData as a File class
         receiptData = new File(FILE_PATH);
         // instantiates the fileHandler class
         fileHandler = new FileHandler<>();
+        // If receiptData file does not exist
         if (!receiptData.exists()) {
+            // Creates a file path called foler
             File folder = new File(PATH);
+            // Makes a directory to folder
             folder.mkdir();
+            // Creates a file with no receipts in the folder
             fileHandler.saveObject(receipts, receiptData);
         }
         // instantiates the dialogs class
