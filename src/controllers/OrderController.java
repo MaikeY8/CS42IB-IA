@@ -260,6 +260,8 @@ public class OrderController {
      * Calculates the change that is needed to give back to the customer based
      * on the customer amount inputted by the user and displays the change in
      * the change text box field
+     * 
+     * @return true or false depending on if customer is paying enough
      */
     public boolean change() {
         // Gets total cost of items on the table by calling checkTableCost
