@@ -119,6 +119,8 @@ public class ViewReceiptController {
     
     /**
      * Closes the a receipt UI and saves the receipt data to a permanent file
+     * 
+     * @param frame the JFrame to be disposed of
      */
     public void closing(JFrame frame) {
         DataStructures.receipts.closing();
