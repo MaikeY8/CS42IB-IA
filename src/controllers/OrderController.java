@@ -278,6 +278,12 @@ public class OrderController {
         if (total > customerAmount) {
             return false;
         }
+        // If the total is the same as the amount the customer is paying
+        if (total == customerAmount) {
+            // Sets the change text box to have no change
+            jTextChange.setText("0.00");
+            return true;
+        }
         else {
             // Calculates the change
             double change = customerAmount - total;
