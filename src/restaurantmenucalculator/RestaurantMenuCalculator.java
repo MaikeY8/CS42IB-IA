@@ -21,8 +21,9 @@ public class RestaurantMenuCalculator {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // Instantiates the DataStructures class
         new DataStructures();
-        System.out.println("ooo");
+        // Try catch for an Exception error
         try {
             // Sets the colour palette for all JFrames (UI)
             FlatArcOrangeIJTheme.setup();
@@ -31,6 +32,7 @@ public class RestaurantMenuCalculator {
         /* Creates and displays the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                // Instantiates the Login UI
                 new LoginUI();
             }
         });

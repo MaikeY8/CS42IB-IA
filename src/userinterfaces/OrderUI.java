@@ -5,6 +5,7 @@ package userinterfaces;
 /** Required imports */
 import controllers.OrderController;
 import data.OrderData;
+import javax.swing.JButton;
 
 /**
  * OrderUI.java - the user interface view that appears and acts like an ordering
@@ -23,7 +24,6 @@ public class OrderUI extends javax.swing.JFrame {
      */
     public OrderUI() {
         initComponents();
-        setFrame();
         controller = new OrderController(
                 this,
                 jTableOrder,
@@ -44,6 +44,7 @@ public class OrderUI extends javax.swing.JFrame {
                 jTextFieldNumber,
                 jTextFieldAddress,
                 jComboBoxOrderType);
+        setFrame();
     }
 
     /**
@@ -53,7 +54,7 @@ public class OrderUI extends javax.swing.JFrame {
         // Sets the title of the window
         setTitle("Restaurant");
         // Sets the size of the window
-        setSize(1450, 840);
+        setSize(1455, 833);
         // Sets the location to show up in the middle (null) 
         this.setLocationRelativeTo(null);
         // Sets the frame to be visible
@@ -62,6 +63,11 @@ public class OrderUI extends javax.swing.JFrame {
         setResizable(false);
         // Sets to dispose on close
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        // Sets item buttons to start with appetizers
+        controller.setItems(
+                jButtonAppetizers.getText(),
+                OrderData.APPETIZER_NAMES,
+                OrderData.APPETIZER_PRICES);
     }
 
     /**
@@ -226,6 +232,7 @@ public class OrderUI extends javax.swing.JFrame {
 
         jTextChange.setEditable(false);
         jTextChange.setFont(new java.awt.Font("Britannic Bold", 0, 36)); // NOI18N
+        jTextChange.setText("0.00");
         jPanel3.add(jTextChange, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 210, -1));
 
         jComboBoxPayment.setFont(new java.awt.Font("Britannic Bold", 0, 36)); // NOI18N

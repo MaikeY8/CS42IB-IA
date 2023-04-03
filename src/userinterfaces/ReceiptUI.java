@@ -34,7 +34,7 @@ public class ReceiptUI extends javax.swing.JFrame {
         // Sets the title of the window
         setTitle("Restaurant");
         // Sets the size of the window
-        setSize(500, 800);
+        setSize(385, 685);
         // Sets the location to show up in the middle (null) 
         this.setLocationRelativeTo(null);
         // Sets the frame to be visible

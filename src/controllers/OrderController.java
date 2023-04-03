@@ -138,7 +138,7 @@ public class OrderController {
     /**
      * Sets up the item buttons used for adding items to the order and assigns
      * prices to each button based on the passed parameters
-     * 
+     *
      * @param buttonName the text of each button
      * @param names the array of names of each dish/item for the buttons
      * @param prices the array of prices of each dish/item for the buttons
@@ -155,7 +155,7 @@ public class OrderController {
     /**
      * Sets the name of all the item buttons to a specific dish/item from the
      * passed names of dishes
-     * 
+     *
      * @param names the array of names for each dish (based on category)
      */
     private void setButtonNames(String[] names) {
@@ -168,9 +168,9 @@ public class OrderController {
         }
     }
 
-    /** 
+    /**
      * Sets the number of buttons required from the passed number of buttons
-     * 
+     *
      * @param buttonNum the number of buttons based on the names array length
      */
     private void setButtons(int buttonNum) {
@@ -214,7 +214,7 @@ public class OrderController {
 
     /**
      * Adds up all the item prices on the table and returns that value
-     * 
+     *
      * @return all the prices on the table added up
      */
     private double checkTableCost() {
@@ -261,7 +261,7 @@ public class OrderController {
      * on the customer amount inputted by the user and displays the change in
      * the change text box field
      */
-    public void change() {
+    public boolean change() {
         // Gets total cost of items on the table by calling checkTableCost
         double allCost = checkTableCost();
         // Gets the amount the customer is paying with
@@ -270,11 +270,20 @@ public class OrderController {
         double customerAmount = Double.parseDouble(stringCustomerAmount);
         // Calculates the tax
         double tax = (allCost * TAX);
-        // Calculates the change
-        double change = customerAmount - (allCost + tax);
-        // Format the change amount and sets the textbox
-        String stringChange = String.format("%.2f", change);
-        jTextChange.setText(stringChange);
+        // Calculates the total for the order
+        double total = allCost + tax;
+        // If the total price of the order is more than what customer is paying
+        if (total > customerAmount) {
+            return false;
+        }
+        else {
+            // Calculates the change
+            double change = customerAmount - total;
+            // Format the change amount and sets the textbox
+            String stringChange = String.format("%.2f", change);
+            jTextChange.setText(stringChange);
+            return true;
+        }
     }
 
     /**
@@ -285,9 +294,9 @@ public class OrderController {
     }
 
     /**
-     * Changes the item prices for each item button based on the inputted
-     * array of prices
-     * 
+     * Changes the item prices for each item button based on the inputted array
+     * of prices
+     *
      * @param prices the array of prices based on a category of item
      */
     private void changeItemPrices(BigDecimal[] prices) {
@@ -301,7 +310,7 @@ public class OrderController {
     /**
      * On a item button press, adds an item to the table depending on the button
      * press of any item button based on the passed data from each button
-     * 
+     *
      * @param buttonName the text on the item button
      * @param amount the amount to add per item
      * @param buttonNum the button number depending on the item button
@@ -322,10 +331,10 @@ public class OrderController {
                 // Converts the item amount to BigDecimal to calculate with
                 BigDecimal tableAmount = new BigDecimal(itemAmount);
                 // Calculates the new total cost of the row (item(s)) on table
-                BigDecimal newCost =
-                        tableAmount.multiply(itemCostsArray[buttonNum]);
+                BigDecimal newCost
+                        = tableAmount.multiply(itemCostsArray[buttonNum]);
                 // Sets the new cost onto the table
-                jTableOrder.setValueAt(newCost, i, 2);              
+                jTableOrder.setValueAt(newCost, i, 2);
                 cost();         // Calculates the new cost of the order
                 return;         // Exits the method early
             }
@@ -369,8 +378,8 @@ public class OrderController {
             // Sets the itemCostArray values to 0 (each item button price value)
             Arrays.fill(itemCostsArray, BigDecimal.ZERO);
             // Sets the table model
-            DefaultTableModel tableModel = 
-                    (DefaultTableModel) jTableOrder.getModel();
+            DefaultTableModel tableModel
+                    = (DefaultTableModel) jTableOrder.getModel();
             // Removes all the rows (items) in the table
             tableModel.setRowCount(0);
             // Sets all the textbox fields to be empty
@@ -475,8 +484,14 @@ public class OrderController {
                     + "customer is paying with");
             return;         // Exits the method early
         }
-        // Passed all the tests...
-        change();           // Calculates the change for the customer
+        // Passed all the tests order data tests...
+        boolean check = change();      // Calculates the change for the customer
+        // If didn't pass the check in the order
+        if (check == false) { // Exits the method early
+            // Tells user the customer is not paying enough
+            DataStructures.dialogs.output("Customer is not paying enough");
+            return;
+        }
         // Gets all required cost data needed for the receipt
         double allCost = checkTableCost();  // Total cost of items on table
         String stringSubTotal = String.format("%.2f", allCost);
@@ -508,7 +523,7 @@ public class OrderController {
      * Generates the contents of a receipt with the proper receipt format
      * including all the purchased items and details of the order based on the
      * passed in parameters
-     * 
+     *
      * @param customerName the name of the customer
      * @param orderType the type of order
      * @param number the customer's number
@@ -534,10 +549,10 @@ public class OrderController {
                 + "\nNumber: " + number
                 + "\nAddress: " + address
                 + "\n-------------------------------------------------------"
-                + "--------------"
+                + "---------"
                 + "\nItem\t\tAmount\tPrice"
                 + "\n-------------------------------------------------------"
-                + "--------------\n";
+                + "---------\n";
         // Loops through all the rows (items) on the table
         for (int i = 0; i < jTableOrder.getRowCount(); i++) {
             // Gets name of row (item)
@@ -549,17 +564,17 @@ public class OrderController {
             // If the item name is long then...
             if (itemName.length() <= 15) {
                 // Give two indents for spacing when makeing new receipt line
-                content += itemName + "\t\t" + itemAmount + "\t" + itemPrice + 
-                        "\n";
+                content += itemName + "\t\t" + itemAmount + "\t" + itemPrice
+                        + "\n";
             } else {
                 // Give one indent for spacing when makeing new receipt line
-                content += itemName + "\t" + itemAmount + "\t" + itemPrice + 
-                        "\n";
+                content += itemName + "\t" + itemAmount + "\t" + itemPrice
+                        + "\n";
             }
         }
         // Formats the bottom portion of the receipt with the costs of the order
         content += "--------------------------------------------------------"
-                + "-------------"
+                + "--------"
                 + "\nPayment Method: " + payment
                 + "\nSub-Total:\t\t\t" + subTotal
                 + "\nTax:\t\t\t" + tax

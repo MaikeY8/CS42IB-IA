@@ -4,6 +4,7 @@ package userinterfaces;
 
 /** Required imports */
 import controllers.ViewReceiptController;
+import data.DataStructures;
 
 /**
  * ViewReceiptUI.java - the user interface view that appears and allows the user
@@ -34,7 +35,7 @@ public class ViewReceiptUI extends javax.swing.JFrame {
         // Sets the title of the window
         setTitle("Restaurant");
         // Sets the size of the window
-        setSize(500, 800);
+        setSize(385, 785);
         // Sets the location to show up in the middle (null) 
         this.setLocationRelativeTo(null);
         // Sets the frame to be visible
@@ -95,6 +96,7 @@ public class ViewReceiptUI extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 170, 40));
 
+        jTextArea.setEditable(false);
         jTextArea.setColumns(20);
         jTextArea.setRows(5);
         jScrollPane1.setViewportView(jTextArea);
@@ -109,7 +111,7 @@ public class ViewReceiptUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrintActionPerformed
-        // TODO add your handling code here:
+        DataStructures.dialogs.output("To be added in future versions");
     }//GEN-LAST:event_jButtonPrintActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
