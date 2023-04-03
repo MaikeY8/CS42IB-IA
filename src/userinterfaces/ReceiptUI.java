@@ -34,7 +34,7 @@ public class ReceiptUI extends javax.swing.JFrame {
         // Sets the title of the window
         setTitle("Restaurant");
         // Sets the size of the window
-        setSize(385, 685);
+        setSize(450, 685);
         // Sets the location to show up in the middle (null) 
         this.setLocationRelativeTo(null);
         // Sets the frame to be visible
@@ -61,7 +61,9 @@ public class ReceiptUI extends javax.swing.JFrame {
         jTextSearch = new javax.swing.JTextField();
         jButtonMenu = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
-        jButtonOpen1 = new javax.swing.JButton();
+        jButtonSearch = new javax.swing.JButton();
+        jButtonOpen = new javax.swing.JButton();
+        jButtonSort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -70,21 +72,21 @@ public class ReceiptUI extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(receiptList, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 350, 440));
+        getContentPane().add(receiptList, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 410, 440));
 
         jLabel9.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
         jLabel9.setText("Search:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 90, 30));
 
         jComboBoxSort.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
-        getContentPane().add(jComboBoxSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 260, 30));
+        getContentPane().add(jComboBoxSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 220, 30));
 
         jLabel10.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
         jLabel10.setText("Sort:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 30));
 
         jTextSearch.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
-        getContentPane().add(jTextSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 260, 30));
+        getContentPane().add(jTextSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 220, 30));
 
         jButtonMenu.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonMenu.setText("Menu");
@@ -93,7 +95,7 @@ public class ReceiptUI extends javax.swing.JFrame {
                 jButtonMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 350, 40));
+        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 410, 40));
 
         jButtonDelete.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonDelete.setText("Delete");
@@ -102,16 +104,34 @@ public class ReceiptUI extends javax.swing.JFrame {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 170, 40));
+        getContentPane().add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 200, 40));
 
-        jButtonOpen1.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonOpen1.setText("Open");
-        jButtonOpen1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSearch.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
+        jButtonSearch.setText("Search");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOpen1ActionPerformed(evt);
+                jButtonSearchActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonOpen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 170, 40));
+        getContentPane().add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 90, 30));
+
+        jButtonOpen.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
+        jButtonOpen.setText("Open");
+        jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOpenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonOpen, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 200, 40));
+
+        jButtonSort.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
+        jButtonSort.setText("Sort");
+        jButtonSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSortActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 90, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,14 +150,24 @@ public class ReceiptUI extends javax.swing.JFrame {
         controller.closing(this);
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButtonOpen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpen1ActionPerformed
-        controller.displaySelectedReceipt();
-    }//GEN-LAST:event_jButtonOpen1ActionPerformed
+    private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonOpenActionPerformed
+
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+         
+    }//GEN-LAST:event_jButtonSearchActionPerformed
+
+    private void jButtonSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSortActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonMenu;
-    private javax.swing.JButton jButtonOpen1;
+    private javax.swing.JButton jButtonOpen;
+    private javax.swing.JButton jButtonSearch;
+    private javax.swing.JButton jButtonSort;
     private javax.swing.JComboBox<String> jComboBoxSort;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;
