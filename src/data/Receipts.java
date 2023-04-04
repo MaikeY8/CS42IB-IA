@@ -104,6 +104,7 @@ public class Receipts implements Serializable {
      * @param text
      */
     public void search(List receiptList, String choice, String text) {
+        DataStructures.receipts.displayAll(receiptList);
         if (choice.equals("") || choice == null) {
             DataStructures.dialogs.output("Please select a search type");
             return;
@@ -145,7 +146,7 @@ public class Receipts implements Serializable {
      * @param option
      */
     public void sort(List receiptList, String option) {
-
+        DataStructures.receipts.displayAll(receiptList);
     }
 
     /**

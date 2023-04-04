@@ -45,7 +45,7 @@ public class Receipt implements Serializable {
      * An Accessor method for the encapsulated class property
      * @return the name of the customer for this receipt
      */
-    public String getCustomerName() {
+    public String getName() {
         return customerName;
     }
     
@@ -88,7 +88,7 @@ public class Receipt implements Serializable {
      */
     @Override
     public String toString() {
-        return customerName + " | " + orderType + " | " + number;
+        return customerName + " | " + number + " | " + address;
     }
     
     
@@ -102,13 +102,13 @@ public class Receipt implements Serializable {
     public boolean equals(Object object) {
         Receipt that = (Receipt)object;
         if (DataStructures.type == DataStructures.BY_NAME) {
-            return this.getCustomerName().equals(that.getCustomerName());
+            return this.getName().equalsIgnoreCase(that.getName());
         }
         else if (DataStructures.type == DataStructures.BY_NUMBER) {
-            return this.getNumber().equals(that.getNumber());
+            return this.getNumber().equalsIgnoreCase(that.getNumber());
         }
         else if (DataStructures.type == DataStructures.BY_ADDRESS) {
-            return this.getAddress().equals(that.getAddress());
+            return this.getAddress().equalsIgnoreCase(that.getAddress());
         }
         return false;
     }

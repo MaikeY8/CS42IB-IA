@@ -1,19 +1,20 @@
-
 /** Required package class namespace */
 package userinterfaces;
 
-/** Required imports */
+/**
+ * Required imports
+ */
 import controllers.ViewReceiptController;
 import data.DataStructures;
 
 /**
- * ReceiptUI.java - the user interface view that appears and displays a list
- * of all the receipts saved in as a file, allowing for deletion and viewing
- * 
+ * ReceiptUI.java - the user interface view that appears and displays a list of
+ * all the receipts saved in as a file, allowing for deletion and viewing
+ *
  * @author mikex
  */
 public class ReceiptUI extends javax.swing.JFrame {
-    
+
     // Connection to an encapsulated controller for this user interface
     private ViewReceiptController controller;
 
@@ -26,7 +27,7 @@ public class ReceiptUI extends javax.swing.JFrame {
         controller = new ViewReceiptController(receiptList);
         DataStructures.receipts.displayAll(receiptList);
     }
-    
+
     /**
      * Sets the visual properties of the JFrame
      */
@@ -34,7 +35,7 @@ public class ReceiptUI extends javax.swing.JFrame {
         // Sets the title of the window
         setTitle("Restaurant");
         // Sets the size of the window
-        setSize(500, 700);
+        setSize(500, 800);
         // Sets the location to show up in the middle (null) 
         this.setLocationRelativeTo(null);
         // Sets the frame to be visible
@@ -62,9 +63,10 @@ public class ReceiptUI extends javax.swing.JFrame {
         jButtonMenu = new javax.swing.JButton();
         jButtonDelete = new javax.swing.JButton();
         jButtonSearch = new javax.swing.JButton();
-        jButtonOpen = new javax.swing.JButton();
+        jButtonRefresh = new javax.swing.JButton();
         jButtonSort = new javax.swing.JButton();
         jComboBoxSort1 = new javax.swing.JComboBox<>();
+        jButtonOpen1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -98,7 +100,7 @@ public class ReceiptUI extends javax.swing.JFrame {
                 jButtonMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 470, 50));
+        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 660, 230, 50));
 
         jButtonDelete.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonDelete.setText("Delete");
@@ -118,14 +120,14 @@ public class ReceiptUI extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 90, 30));
 
-        jButtonOpen.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonOpen.setText("Open");
-        jButtonOpen.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRefresh.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
+        jButtonRefresh.setText("Refresh");
+        jButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonOpenActionPerformed(evt);
+                jButtonRefreshActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonOpen, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 230, 50));
+        getContentPane().add(jButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 230, 50));
 
         jButtonSort.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonSort.setText("Sort");
@@ -140,6 +142,15 @@ public class ReceiptUI extends javax.swing.JFrame {
         jComboBoxSort1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Number", "Address" }));
         jComboBoxSort1.setSelectedIndex(-1);
         getContentPane().add(jComboBoxSort1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 280, 30));
+
+        jButtonOpen1.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
+        jButtonOpen1.setText("Open");
+        jButtonOpen1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOpen1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonOpen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 230, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,22 +169,29 @@ public class ReceiptUI extends javax.swing.JFrame {
         controller.closing(this);
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButtonOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonOpenActionPerformed
+    private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
+        DataStructures.receipts.displayAll(receiptList);
+    }//GEN-LAST:event_jButtonRefreshActionPerformed
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-         
+        String choice = jComboBoxSearch.getSelectedItem().toString();
+        String text = jTextSearch.getText();
+        DataStructures.receipts.search(receiptList, choice, text);
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSortActionPerformed
 
+    private void jButtonOpen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpen1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonOpen1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonMenu;
-    private javax.swing.JButton jButtonOpen;
+    private javax.swing.JButton jButtonOpen1;
+    private javax.swing.JButton jButtonRefresh;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JButton jButtonSort;
     private javax.swing.JComboBox<String> jComboBoxSearch;
