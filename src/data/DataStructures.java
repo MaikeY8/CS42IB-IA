@@ -22,19 +22,25 @@ public class DataStructures {
     private static final String TITLE = "Restaurant";
     private static final Font FONT = new Font("Brittanica Bold",
             Font.PLAIN, 14);
-    private static final Color BACKGROUND = new Color(242, 242, 242);
-    private static final Color FOREGROUND = new Color(0, 0, 0);
+    private static final Color  BACKGROUND = new Color(242, 242, 242);
+    private static final Color  FOREGROUND = new Color(0, 0, 0);
     private static final String USER = System.getProperty("user.name");
     private static final String PATH = "C:\\Users\\" + USER
             + "\\Documents\\ReceiptsFile\\";
-    private static final String FILE_PATH = PATH + "receiptsData.txt";
+    private static final String FILE_PATH  = PATH + "receiptsData.txt";
 
     // Public properties for all the classes to share and use
-    public static File receiptData;
-    public static String cashierName;
-    public static Dialogs dialogs;
-    public static Receipts receipts;
+    public static final int     BY_NAME    = 1;
+    public static final int     BY_NUMBER  = 2;
+    public static final int     BY_ADDRESS = 3;
+    
+    public static File                  receiptData;
+    public static String                cashierName;
+    public static Dialogs               dialogs;
+    public static Receipts              receipts;
     public static FileHandler<Receipts> fileHandler;
+    
+    public static int                   type;
 
     /**
      * Constructor method that initializes the startup of the application and

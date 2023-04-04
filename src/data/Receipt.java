@@ -18,6 +18,7 @@ public class Receipt implements Serializable {
     private String customerName;
     private String orderType;
     private String number;
+    private String address;
     private String content;
 
     /**
@@ -28,13 +29,15 @@ public class Receipt implements Serializable {
      * @param customerName the name of the customer of the receipt
      * @param orderType the type of order on the receipt
      * @param number the customer's number on the receipt
+     * @param address the customer's address on the receipt
      * @param content the contents of the receipt object
      */
-    public Receipt(String customerName, String orderType, String number, 
-            String content) {
+    public Receipt(String customerName, String orderType, String number,
+            String address, String content) {
         this.customerName = customerName;
         this.orderType    = orderType;
         this.number       = number;
+        this.address      = address;
         this.content      = content;
     }
     
@@ -64,6 +67,14 @@ public class Receipt implements Serializable {
     
     /**
      * An Accessor method for the encapsulated class property
+     * @return the customer's number for this receipt object
+     */
+    public String getAddress() {
+        return address;
+    }
+    
+    /**
+     * An Accessor method for the encapsulated class property
      * @return the contents of the actual receipt object
      */
     public String getContent() {
@@ -78,5 +89,27 @@ public class Receipt implements Serializable {
     @Override
     public String toString() {
         return customerName + " | " + orderType + " | " + number;
+    }
+    
+    
+    /**
+     * Deep comparison, determines if two objects are "equal" in this context
+     * 
+     * @param object the object to compare to
+     * @return the objects are "equal" (true) or not (false)
+     */
+    @Override
+    public boolean equals(Object object) {
+        Receipt that = (Receipt)object;
+        if (DataStructures.type == DataStructures.BY_NAME) {
+            return this.getCustomerName().equals(that.getCustomerName());
+        }
+        else if (DataStructures.type == DataStructures.BY_NUMBER) {
+            return this.getNumber().equals(that.getNumber());
+        }
+        else if (DataStructures.type == DataStructures.BY_ADDRESS) {
+            return this.getAddress().equals(that.getAddress());
+        }
+        return false;
     }
 }

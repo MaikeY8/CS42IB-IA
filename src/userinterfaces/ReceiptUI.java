@@ -34,7 +34,7 @@ public class ReceiptUI extends javax.swing.JFrame {
         // Sets the title of the window
         setTitle("Restaurant");
         // Sets the size of the window
-        setSize(450, 685);
+        setSize(500, 700);
         // Sets the location to show up in the middle (null) 
         this.setLocationRelativeTo(null);
         // Sets the frame to be visible
@@ -56,7 +56,7 @@ public class ReceiptUI extends javax.swing.JFrame {
 
         receiptList = new java.awt.List();
         jLabel9 = new javax.swing.JLabel();
-        jComboBoxSort = new javax.swing.JComboBox<>();
+        jComboBoxSearch = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jTextSearch = new javax.swing.JTextField();
         jButtonMenu = new javax.swing.JButton();
@@ -64,6 +64,7 @@ public class ReceiptUI extends javax.swing.JFrame {
         jButtonSearch = new javax.swing.JButton();
         jButtonOpen = new javax.swing.JButton();
         jButtonSort = new javax.swing.JButton();
+        jComboBoxSort1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -72,21 +73,23 @@ public class ReceiptUI extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(receiptList, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 410, 440));
+        getContentPane().add(receiptList, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 470, 500));
 
         jLabel9.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
         jLabel9.setText("Search:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 90, 30));
 
-        jComboBoxSort.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
-        getContentPane().add(jComboBoxSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 220, 30));
+        jComboBoxSearch.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
+        jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Number", "Address" }));
+        jComboBoxSearch.setSelectedIndex(-1);
+        getContentPane().add(jComboBoxSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, 30));
 
         jLabel10.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
         jLabel10.setText("Sort:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 30));
 
         jTextSearch.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
-        getContentPane().add(jTextSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 220, 30));
+        getContentPane().add(jTextSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 150, 30));
 
         jButtonMenu.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonMenu.setText("Menu");
@@ -95,7 +98,7 @@ public class ReceiptUI extends javax.swing.JFrame {
                 jButtonMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 410, 40));
+        getContentPane().add(jButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 470, 50));
 
         jButtonDelete.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonDelete.setText("Delete");
@@ -104,7 +107,7 @@ public class ReceiptUI extends javax.swing.JFrame {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 200, 40));
+        getContentPane().add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 600, 230, 50));
 
         jButtonSearch.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonSearch.setText("Search");
@@ -113,7 +116,7 @@ public class ReceiptUI extends javax.swing.JFrame {
                 jButtonSearchActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 90, 30));
+        getContentPane().add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 90, 30));
 
         jButtonOpen.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonOpen.setText("Open");
@@ -122,7 +125,7 @@ public class ReceiptUI extends javax.swing.JFrame {
                 jButtonOpenActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonOpen, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 200, 40));
+        getContentPane().add(jButtonOpen, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 230, 50));
 
         jButtonSort.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonSort.setText("Sort");
@@ -131,7 +134,12 @@ public class ReceiptUI extends javax.swing.JFrame {
                 jButtonSortActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 90, 30));
+        getContentPane().add(jButtonSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 90, 30));
+
+        jComboBoxSort1.setFont(new java.awt.Font("Britannic Bold", 0, 24)); // NOI18N
+        jComboBoxSort1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Number", "Address" }));
+        jComboBoxSort1.setSelectedIndex(-1);
+        getContentPane().add(jComboBoxSort1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 280, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -168,7 +176,8 @@ public class ReceiptUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonOpen;
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JButton jButtonSort;
-    private javax.swing.JComboBox<String> jComboBoxSort;
+    private javax.swing.JComboBox<String> jComboBoxSearch;
+    private javax.swing.JComboBox<String> jComboBoxSort1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextSearch;

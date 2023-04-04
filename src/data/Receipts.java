@@ -96,13 +96,58 @@ public class Receipts implements Serializable {
         }
     }
 
-//    public void search(List receiptList, String choice) {
-//        
-//    }
-//
-//    public void sort(List receiptList) {
-//        
-//    }
+    /**
+     *
+     *
+     * @param receiptList
+     * @param choice
+     * @param text
+     */
+    public void search(List receiptList, String choice, String text) {
+        if (choice.equals("") || choice == null) {
+            DataStructures.dialogs.output("Please select a search type");
+            return;
+        }
+        if (text.equals("") || choice == null) {
+            DataStructures.dialogs.output("Please enter text to search for");
+            return;
+        }
+        if (choice.equals("Name")) {
+            DataStructures.type = DataStructures.BY_NAME;
+            searchMethod(receiptList, choice, text);
+        } else if (choice.equals("Number")) {
+            DataStructures.type = DataStructures.BY_NUMBER;
+            searchMethod(receiptList, choice, text);
+        } else if (choice.equals("Address")) {
+            DataStructures.type = DataStructures.BY_ADDRESS;
+            searchMethod(receiptList, choice, text);
+        }
+    }
+
+    private void searchMethod(List receiptList, String choice, String text) {
+        Receipt receipt = new Receipt(text, null, null, null, null);
+        int[] indices = list.allIndices(receipt);
+        if (indices == null) {
+            DataStructures.dialogs.output("No receipt with that " + choice);
+            return;
+        }
+        receiptList.removeAll();// Clears the entire listbox of anything
+        for (int i = 0; i < indices.length; i++) {
+            Receipt newReceipt = list.get(indices[i]);
+            receiptList.add(newReceipt.toString());
+        }
+    }
+
+    /**
+     *
+     *
+     * @param receiptList
+     * @param option
+     */
+    public void sort(List receiptList, String option) {
+
+    }
+
     /**
      * Saves the receipts data to a permanent file
      */

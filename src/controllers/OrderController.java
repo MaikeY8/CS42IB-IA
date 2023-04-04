@@ -520,7 +520,7 @@ public class OrderController {
                 address, payment, stringTotal, stringTax, stringSubTotal);
         // Instantiates a Receipt object (create an instance of a Receipt)
         Receipt receipt = new Receipt(
-                customerName, orderType, number, receiptContent);
+                customerName, orderType, number, address, receiptContent);
         // Adds the receipt to the collection (Receipts)
         new ViewReceiptController(receipt);
         // Displays the receipt in the viewReceipt UI
