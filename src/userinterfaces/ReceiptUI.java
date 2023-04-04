@@ -24,7 +24,8 @@ public class ReceiptUI extends javax.swing.JFrame {
     public ReceiptUI() {
         initComponents();
         setFrame();
-        controller = new ViewReceiptController(receiptList);
+        controller = new ViewReceiptController(receiptList,
+                jComboBoxSearch, jTextSearch);
         DataStructures.receipts.displayAll(receiptList);
     }
 
@@ -174,9 +175,7 @@ public class ReceiptUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRefreshActionPerformed
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-        String choice = jComboBoxSearch.getSelectedItem().toString();
-        String text = jTextSearch.getText();
-        controller.searchAllReceipts(receiptList, choice, text);
+        controller.searchAllReceipts();
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortActionPerformed
