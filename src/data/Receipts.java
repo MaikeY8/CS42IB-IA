@@ -140,8 +140,19 @@ public class Receipts implements Serializable {
      * @param text the text to search for
      */
     private void searchMethod(List receiptList, String choice, String text) {
-        // Creates a temporary receipt with the text to search for
-        Receipt receipt = new Receipt(text, null, null, null, null);
+        // Creates a new temporary receipt object
+        Receipt receipt = null;
+        // Checks for search type and creates a temporary array with text
+        if (choice.equals("Name")) {
+            // Sets the text to search for in the temp receipt
+            receipt = new Receipt(text, null, null, null, null);
+        } else if (choice.equals("Number")) {
+            // Sets the text to search for in the temp receipt
+            receipt = new Receipt(null, null, text, null, null);
+        } else if (choice.equals("Address")) {
+            // Sets the text to search for in the temp receipt
+            receipt = new Receipt(null, null, null, text, null);
+        }
         // Creates an array of integers with all indices receipts that match
         // the text to search for
         int[] indices = list.allIndices(receipt);
