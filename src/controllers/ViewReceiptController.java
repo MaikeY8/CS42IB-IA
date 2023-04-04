@@ -118,6 +118,11 @@ public class ViewReceiptController {
             DataStructures.dialogs.output("There are no receipts");
             return;         // Ends method early
         }
+        // If no search type then prompts user to select one
+        if (jComboBoxSearch.getSelectedItem() == null) {
+            DataStructures.dialogs.output("Please select a search type");
+            return;         // Ends method early
+        }
         // Gets the search type from the combo box
         String choice = jComboBoxSearch.getSelectedItem().toString();
         // Gets the text to search for from the text field
