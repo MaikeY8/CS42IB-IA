@@ -108,11 +108,6 @@ public class Receipts implements Serializable {
     public void search(List receiptList, String choice, String text) {
         // Displays all receipts in list
         DataStructures.receipts.displayAll(receiptList);
-        // If no search type then prompts user to select one
-        if (choice.equals("") || choice == null) {
-            DataStructures.dialogs.output("Please select a search type");
-            return;         // Ends method early
-        }
         // If no text to search then prompts user to type one in
         if (text.equals("") || choice == null) {
             DataStructures.dialogs.output("Please enter text to search for");
