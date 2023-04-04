@@ -15,11 +15,11 @@ import java.io.Serializable;
 public class Receipt implements Serializable {
     
     /** the global properties of this receipt object */
-    private String customerName;
-    private String orderType;
-    private String number;
-    private String address;
-    private String content;
+    private final String customerName;
+    private final String orderType;
+    private final String number;
+    private final String address;
+    private final String content;
 
     /**
      * A constructor method which sets the class properties. Done by connecting 
@@ -67,7 +67,7 @@ public class Receipt implements Serializable {
     
     /**
      * An Accessor method for the encapsulated class property
-     * @return the customer's number for this receipt object
+     * @return the customer's address for this receipt object
      */
     public String getAddress() {
         return address;
@@ -100,16 +100,21 @@ public class Receipt implements Serializable {
      */
     @Override
     public boolean equals(Object object) {
+        // Gets the generated receipt to compare with
         Receipt that = (Receipt)object;
+        // If name search then checks if receipt has same name
         if (DataStructures.type == DataStructures.BY_NAME) {
             return this.getName().equalsIgnoreCase(that.getName());
         }
+        // If number search then checks if receipt has same name
         else if (DataStructures.type == DataStructures.BY_NUMBER) {
             return this.getNumber().equalsIgnoreCase(that.getNumber());
         }
+        // If address search then checks if receipt has same name
         else if (DataStructures.type == DataStructures.BY_ADDRESS) {
             return this.getAddress().equalsIgnoreCase(that.getAddress());
         }
+        // No matches return false
         return false;
     }
 }
