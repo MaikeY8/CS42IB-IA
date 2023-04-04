@@ -176,7 +176,7 @@ public class ReceiptUI extends javax.swing.JFrame {
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
         String choice = jComboBoxSearch.getSelectedItem().toString();
         String text = jTextSearch.getText();
-        DataStructures.receipts.search(receiptList, choice, text);
+        controller.searchAllReceipts(receiptList, choice, text);
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortActionPerformed
@@ -184,7 +184,7 @@ public class ReceiptUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSortActionPerformed
 
     private void jButtonOpen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpen1ActionPerformed
-        // TODO add your handling code here:
+        controller.displaySelectedReceipt();
     }//GEN-LAST:event_jButtonOpen1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
