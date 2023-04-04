@@ -162,8 +162,7 @@ public class ReceiptUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMenuActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        DataStructures.receipts.deleteSelected(receiptList.getSelectedIndex(),
-                receiptList);
+        controller.deleteSelectedReceipt();
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -171,7 +170,7 @@ public class ReceiptUI extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRefreshActionPerformed
-        DataStructures.receipts.displayAll(receiptList);
+        controller.displayAllReceipts();
     }//GEN-LAST:event_jButtonRefreshActionPerformed
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
