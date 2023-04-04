@@ -45,11 +45,17 @@ public class ViewReceiptController {
     }
     
     /**
-     * Constructor method that sets the receiptList class property
+     * Constructor method that sets the receiptList class properties
+     * 
      * @param receiptList the list that displays all the receipts in receipts UI
+     * @param jComboBoxSearch the search combo box
+     * @param jTextSearch the search text box field
      */
-    public ViewReceiptController(List receiptList) {
+    public ViewReceiptController(List receiptList, JComboBox jComboBoxSearch,
+            JTextField jTextSearch) {
         this.receiptList = receiptList;
+        this.jComboBoxSearch = jComboBoxSearch;
+        this.jTextSearch = jTextSearch;
     }
     
     /**
@@ -105,17 +111,17 @@ public class ViewReceiptController {
      * When button is pressed, searches through all receipts for matching search
      * results based on the type of search and the text to search for after
      * checking to make sure list is not empty
-     * 
-     * @param receiptList the list the receipts are displayed in
-     * @param choice the type of search to conduct
-     * @param text the text to search for
      */
-    public void searchAllReceipts(List receiptList, String choice, String text) {
-        // If the list is empty then informs user the list is empty
+    public void searchAllReceipts() {
+        // If the collection is empty then informs user the list is empty
         if (DataStructures.receipts.isEmpty() == true) {
             DataStructures.dialogs.output("There are no receipts");
             return;         // Ends method early
         }
+        // Gets the search type from the combo box
+        String choice = jComboBoxSearch.getSelectedItem().toString();
+        // Gets the text to search for from the text field
+        String text = jTextSearch.getText();
         // Calls the search method
         DataStructures.receipts.search(receiptList, choice, text);
     }
