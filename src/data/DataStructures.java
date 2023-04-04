@@ -48,6 +48,7 @@ public class DataStructures {
      * instantiating any other relevant classes
      */
     public DataStructures() {
+        Receipt receipt = new Receipt(null, null, null, null, null);
         // instantiates receiptData as a File class
         receiptData = new File(FILE_PATH);
         // instantiates the fileHandler class
