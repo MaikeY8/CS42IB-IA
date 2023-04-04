@@ -101,21 +101,24 @@ public class ViewReceiptController {
         DataStructures.receipts.deleteSelected(index, receiptList);
     }
     
-//    public void searchAllReceipts() {
-//        if (DataStructures.receipts.isEmpty() == true) {
-//            DataStructures.dialogs.output("There are no receipts");
-//            return;
-//        }
-//        DataStructures.receipts.search(list);
-//    }
-    
-//    public void sortAllReceipts() {
-//        if (DataStructures.receipts.isEmpty() == true) {
-//            DataStructures.dialogs.output("There are no receipts");
-//            return;
-//        }
-//        DataStructures.receipts.sort(list);
-//    }
+    /**
+     * When button is pressed, searches through all receipts for matching search
+     * results based on the type of search and the text to search for after
+     * checking to make sure list is not empty
+     * 
+     * @param receiptList the list the receipts are displayed in
+     * @param choice the type of search to conduct
+     * @param text the text to search for
+     */
+    public void searchAllReceipts(List receiptList, String choice, String text) {
+        // If the list is empty then informs user the list is empty
+        if (DataStructures.receipts.isEmpty() == true) {
+            DataStructures.dialogs.output("There are no receipts");
+            return;         // Ends method early
+        }
+        // Calls the search method
+        DataStructures.receipts.search(receiptList, choice, text);
+    }
     
     /**
      * Closes the a receipt UI and saves the receipt data to a permanent file
