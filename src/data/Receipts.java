@@ -97,22 +97,28 @@ public class Receipts implements Serializable {
     }
 
     /**
+     * Checks if required fields were filled before calling the search method
+     * to search through the list with the search type and text to search for,
+     * then displaying it results in the list
      *
-     *
-     * @param receiptList
-     * @param choice
-     * @param text
+     * @param receiptList the list the receipts are displayed in
+     * @param choice the type of search to conduct
+     * @param text the text to search for
      */
     public void search(List receiptList, String choice, String text) {
+        // Displays all receipts in list
         DataStructures.receipts.displayAll(receiptList);
+        // If no search type then prompts user to select one
         if (choice.equals("") || choice == null) {
             DataStructures.dialogs.output("Please select a search type");
-            return;
+            return;         // Ends method early
         }
+        // If no text to search then prompts user to type one in
         if (text.equals("") || choice == null) {
             DataStructures.dialogs.output("Please enter text to search for");
-            return;
+            return;         // Ends method early
         }
+        // Gets type of search then searches for the text with the search method
         if (choice.equals("Name")) {
             DataStructures.type = DataStructures.BY_NAME;
             searchMethod(receiptList, choice, text);
@@ -125,28 +131,31 @@ public class Receipts implements Serializable {
         }
     }
 
+    /**
+     * Searches through the list of receipts for any matching receipts to what 
+     * is being searched for and displays all results in the list
+     * 
+     * @param receiptList the list the receipts are displayed in
+     * @param choice the type of search to conduct
+     * @param text the text to search for
+     */
     private void searchMethod(List receiptList, String choice, String text) {
+        // Creates a temporary receipt with the text to search for
         Receipt receipt = new Receipt(text, null, null, null, null);
+        // Creates an array of integers with all indices receipts that match
+        // the text to search for
         int[] indices = list.allIndices(receipt);
+        // If there are no indices then tell user there are no matching receipts
         if (indices == null) {
             DataStructures.dialogs.output("No receipt with that " + choice);
-            return;
+            return;         // End method early
         }
         receiptList.removeAll();// Clears the entire listbox of anything
+        // Loops through all matching indices and displays them on the list
         for (int i = 0; i < indices.length; i++) {
             Receipt newReceipt = list.get(indices[i]);
             receiptList.add(newReceipt.toString());
         }
-    }
-
-    /**
-     *
-     *
-     * @param receiptList
-     * @param option
-     */
-    public void sort(List receiptList, String option) {
-        DataStructures.receipts.displayAll(receiptList);
     }
 
     /**
