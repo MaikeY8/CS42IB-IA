@@ -180,7 +180,7 @@ public class ReceiptUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void jButtonSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSortActionPerformed
-        // TODO add your handling code here:
+        DataStructures.dialogs.output("To be added in future versions");
     }//GEN-LAST:event_jButtonSortActionPerformed
 
     private void jButtonOpen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpen1ActionPerformed
