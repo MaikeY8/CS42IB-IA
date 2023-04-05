@@ -6,7 +6,9 @@ package controllers;
 import data.DataStructures;
 import data.Receipt;
 import java.awt.List;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 import userinterfaces.MenuUI;
 import userinterfaces.ViewReceiptUI;
 
@@ -18,13 +20,16 @@ import userinterfaces.ViewReceiptUI;
  * class connects to the view the user has of the view receipt user interface
  * and the receipts user interface
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class ViewReceiptController {
     
     // Private/encapsulated property of this class
     private ViewReceiptUI viewReceiptUI;
     private List receiptList;
+    private JComboBox jComboBoxSearch;
+    private JTextField jTextSearch;
 
     /**
      * Constructor method that adds the passed receipt to the collection
@@ -142,9 +147,16 @@ public class ViewReceiptController {
     }
     
     /**
-     * Instantiates a new menu UI
+     * When menu button is pressed, confirms the menu with the user before
+     * proceeding to go to the menu
      */
-    public void menu() {
-        new MenuUI();
+    public void menu(JFrame frame) {
+        // Asks the user if he wishes to proceed to the menu
+        boolean input = DataStructures.dialogs.yesNo("Go back to the menu?");
+        // If user replies with yes
+        if (input == true) {
+            new MenuUI();           // Instantiates the menu UI
+            closing(frame);         // Closes the order UI
+        }
     }
 }

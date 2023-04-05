@@ -15,7 +15,8 @@ import userinterfaces.ReceiptUI;
  * menu UI. This controller class connects to the view the user has of the menu
  * user interface
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class MenuController {
 

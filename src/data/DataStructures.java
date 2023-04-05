@@ -14,7 +14,8 @@ import java.io.File;
  * DataStrcutures.java - a shared class of properties (static) across this
  * application of the main database data structure and other useful tools
  *
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class DataStructures {
 

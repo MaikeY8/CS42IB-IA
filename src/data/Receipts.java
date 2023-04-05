@@ -14,7 +14,8 @@ import userinterfaces.ViewReceiptUI;
  * receipts in conjunction with the relevant user interfaces that the user
  * interacts with when using the application
  *
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class Receipts implements Serializable {
 

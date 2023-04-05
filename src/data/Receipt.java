@@ -10,7 +10,8 @@ import java.io.Serializable;
  * a receipt (details of an order) and other important details to be stored
  * for records and viewing
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class Receipt implements Serializable {
     

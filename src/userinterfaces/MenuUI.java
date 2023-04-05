@@ -9,7 +9,8 @@ import controllers.MenuController;
  * MenuUI.java - the user interface view that appears and acts like a menu for 
  * the user to select which main user interface that they would like to open
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class MenuUI extends javax.swing.JFrame {
     

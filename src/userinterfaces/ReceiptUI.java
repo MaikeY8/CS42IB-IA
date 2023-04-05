@@ -11,7 +11,8 @@ import data.DataStructures;
  * ReceiptUI.java - the user interface view that appears and displays a list of
  * all the receipts saved in as a file, allowing for deletion and viewing
  *
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class ReceiptUI extends javax.swing.JFrame {
 
@@ -157,8 +158,7 @@ public class ReceiptUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenuActionPerformed
-        controller.closing(this);
-        controller.menu();
+        controller.menu(this);
     }//GEN-LAST:event_jButtonMenuActionPerformed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed

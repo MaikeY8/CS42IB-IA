@@ -11,7 +11,8 @@ import java.math.BigDecimal;
  * ordered in arrays depending on the category of the item. All arrays are
  * public constants and can be accessed from any class but cannot be changed
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class OrderData {
 

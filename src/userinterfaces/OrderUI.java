@@ -5,14 +5,14 @@ package userinterfaces;
 /** Required imports */
 import controllers.OrderController;
 import data.OrderData;
-import javax.swing.JButton;
 
 /**
  * OrderUI.java - the user interface view that appears and acts like an ordering
  * menu for the user with all the necessary interactions to create an order and
  * to generate a receipt
  *
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class OrderUI extends javax.swing.JFrame {
 
@@ -203,11 +203,6 @@ public class OrderUI extends javax.swing.JFrame {
         jTextTax.setEditable(false);
         jTextTax.setFont(new java.awt.Font("Britannic Bold", 0, 36)); // NOI18N
         jTextTax.setText("0.00");
-        jTextTax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextTaxActionPerformed(evt);
-            }
-        });
         jPanel2.add(jTextTax, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 210, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 400, 160));
@@ -614,10 +609,6 @@ public class OrderUI extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         controller.closing();
     }//GEN-LAST:event_formWindowClosing
-
-    private void jTextTaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTaxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextTaxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAppetizers;

@@ -10,7 +10,8 @@ import userinterfaces.LoginUI;
 /**
  * RestaurantMenuCalculator - the main class for this application
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class RestaurantMenuCalculator {
 

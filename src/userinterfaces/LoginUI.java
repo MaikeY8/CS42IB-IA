@@ -9,7 +9,8 @@ import controllers.LoginController;
  * LoginUI.java - the user interface view that appears for the user to interact
  * and login to the application with
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class LoginUI extends javax.swing.JFrame {
     

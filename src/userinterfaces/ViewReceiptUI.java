@@ -10,7 +10,8 @@ import data.DataStructures;
  * ViewReceiptUI.java - the user interface view that appears and allows the user
  * to view a selected or generated receipt
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class ViewReceiptUI extends javax.swing.JFrame {
     
@@ -55,7 +56,6 @@ public class ViewReceiptUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonDelete = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jButtonPrint = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -69,15 +69,6 @@ public class ViewReceiptUI extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonDelete.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonDelete.setText("Delete");
-        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, 170, 40));
-
         jButtonBack.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonBack.setText("Back");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +76,7 @@ public class ViewReceiptUI extends javax.swing.JFrame {
                 jButtonBackActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 350, 40));
+        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 640, 170, 50));
 
         jButtonPrint.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
         jButtonPrint.setText("Print");
@@ -94,7 +85,7 @@ public class ViewReceiptUI extends javax.swing.JFrame {
                 jButtonPrintActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 170, 40));
+        getContentPane().add(jButtonPrint, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 170, 50));
 
         jTextArea.setEditable(false);
         jTextArea.setColumns(20);
@@ -114,17 +105,12 @@ public class ViewReceiptUI extends javax.swing.JFrame {
         DataStructures.dialogs.output("To be added in future versions");
     }//GEN-LAST:event_jButtonPrintActionPerformed
 
-    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonDeleteActionPerformed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
+        controller.closing(this);
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonPrint;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea;

@@ -14,7 +14,8 @@ import userinterfaces.MenuUI;
  * associated with the login UI. This controller class connects to the view the
  * user has of the login user interface
  * 
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class LoginController {
 

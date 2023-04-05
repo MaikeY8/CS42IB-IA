@@ -27,7 +27,8 @@ import userinterfaces.ViewReceiptUI;
  * with the order UI. This controller class connects to the view the user has of
  * the order user interface
  *
- * @author mikex
+ * @author Wen Pei (Michael) Yan
+ * @since Feb, 2023
  */
 public class OrderController {
 
