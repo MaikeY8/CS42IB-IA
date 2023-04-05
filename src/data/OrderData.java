@@ -93,9 +93,9 @@ public class OrderData {
 
     // Vegetables
     public final static String[] VEGETABLE_NAMES
-            = {"Plain Vegetables", "Chicken & Vegetables",
+            = {"Plain Veges", "Chicken & Vegetables",
                 "Pork & Veges", "Beef & Veges",
-                "Shrimp & Vegetables", "Deluxe Veges"};
+                "Shrimp & Veges", "Deluxe Veges"};
     public final static BigDecimal[] VEGETABLE_PRICES
             = {new BigDecimal("11.35"), new BigDecimal("11.95"),
                 new BigDecimal("11.95"), new BigDecimal("11.95"),
@@ -112,7 +112,7 @@ public class OrderData {
     public final static String[] SPECIALS_NAMES
             = {"Kung Po Mixed Chicken", "Szechuan Chicken",
                 "Szechuan Fried Shrimp", "Ginger Beef",
-                "Five Spice Squid", "Sesame Mixed Chicken"};
+                "Spicy Squid", "Sesame Mixed Chicken"};
     public final static BigDecimal[] SPECIALS_PRICES
             = {new BigDecimal("14.75"), new BigDecimal("13.50"),
                 new BigDecimal("14.95"), new BigDecimal("14.95"),
@@ -120,7 +120,7 @@ public class OrderData {
 
     // Misc
     public final static String[] MISC_NAMES
-            = {"Seet & Sour Sauce", "Honey Garlic Sauce",
+            = {"Sweet & Sour Sauce", "Honey Garlic Sauce",
                 "Dry Noodles", "Steamed Rice",
                 "Fortune Cookie", "Soft Drink"};
     public final static BigDecimal[] MISC_PRICES

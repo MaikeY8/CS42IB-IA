@@ -19,8 +19,6 @@ import userinterfaces.MenuUI;
  */
 public class LoginController {
 
-    private static final String PASSWORD = "12345";
-
     private LoginUI loginUI;
     private JTextField nameTextbox;
     private JTextField passwordTextbox;
@@ -71,7 +69,7 @@ public class LoginController {
             return;         // Exits the method early
         }
         // Checks if the password sent by the user is equal to the real password
-        if (userPassword.equals(PASSWORD)) {
+        if (userPassword.equals(DataStructures.PASSWORD)) {
             // Calls menu method
             menu();
             // Calls closing method

@@ -8,7 +8,11 @@ import io.Dialogs;
 import io.FileHandler;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  * DataStrcutures.java - a shared class of properties (static) across this
@@ -20,17 +24,24 @@ import java.io.File;
 public class DataStructures {
 
     // Private/encapsulated constants for this class
-    private static final String TITLE = "Restaurant";
-    private static final Font FONT = new Font("Brittanica Bold",
-            Font.PLAIN, 14);
+    private static final Font FONT         = new Font("Brittanica Bold",
+                                                      Font.PLAIN, 14);
     private static final Color  BACKGROUND = new Color(242, 242, 242);
     private static final Color  FOREGROUND = new Color(0, 0, 0);
-    private static final String USER = System.getProperty("user.name");
-    private static final String PATH = "C:\\Users\\" + USER
-            + "\\Documents\\ReceiptsFile\\";
+    private static final String USER       = System.getProperty("user.name");
+    private static final String PATH       = "C:\\Users\\" + USER
+                                           + "\\Documents\\ReceiptsFile\\";
     private static final String FILE_PATH  = PATH + "receiptsData.txt";
-
+    private static final String ICON_FILE  = "/media/panda.png";
+    
     // Public properties for all the classes to share and use
+    public static final String TITLE       = "Panda";
+    public static final String PASSWORD    = "Panda123";
+    public static final double TAX         = 0.12;
+    
+    public static Icon icon;
+    public static Image iconImage;
+    
     public static final int     BY_NAME    = 1;
     public static final int     BY_NUMBER  = 2;
     public static final int     BY_ADDRESS = 3;
@@ -48,11 +59,10 @@ public class DataStructures {
      * loads the permanent storage into the data structures, while also
      * instantiating any other relevant classes
      */
-    public DataStructures() {
-        Receipt receipt = new Receipt(null, null, null, null, null);
-        // instantiates receiptData as a File class
+    public DataStructures() {    
+        // Instantiates receiptData as a File class
         receiptData = new File(FILE_PATH);
-        // instantiates the fileHandler class
+        // Instantiates the fileHandler class
         fileHandler = new FileHandler<>();
         // If receiptData file does not exist
         if (!receiptData.exists()) {
@@ -63,9 +73,13 @@ public class DataStructures {
             // Creates a file with no receipts in the folder
             fileHandler.saveObject(receipts, receiptData);
         }
-        // instantiates the dialogs class
-        dialogs = new Dialogs(TITLE, null, FONT, BACKGROUND, FOREGROUND);
-        // instantiates the fileHandler class
+        // Sets the icon for dialog boxes
+        icon = new ImageIcon(getClass().getResource(ICON_FILE));
+        // Sets the image icon for all frames
+        iconImage = ((ImageIcon)icon).getImage();
+        // Instantiates the dialogs class
+        dialogs = new Dialogs(TITLE, null, FONT, BACKGROUND, FOREGROUND,
+                              JOptionPane.PLAIN_MESSAGE, icon);
         // Gets all the receipts from the receiptData witht he fileHandler
         receipts = fileHandler.openObject(receiptData);
         // If there are no receipts creates a new collection

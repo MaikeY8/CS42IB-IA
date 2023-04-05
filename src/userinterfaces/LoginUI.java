@@ -4,6 +4,7 @@ package userinterfaces;
 
 /** Required imports */
 import controllers.LoginController;
+import data.DataStructures;
 
 /**
  * LoginUI.java - the user interface view that appears for the user to interact
@@ -30,18 +31,18 @@ public class LoginUI extends javax.swing.JFrame {
      * Sets the visual properties of the JFrame
      */
     private void setFrame() {
-        // Sets the title of the window
-        setTitle("Restaurant");
-        // Sets the size of the window
-        setSize(210, 250);
-        // Sets the location to show up in the middle (null) 
+        // Sets the title of the frame
+        setTitle(DataStructures.TITLE);
+        // Sets the icon image of the frame
+        setIconImage(DataStructures.iconImage);
+        // Sets the size of the frame
+        setSize(207, 250);
+        // Sets the location to show up in the middle
         this.setLocationRelativeTo(null);
         // Sets the frame to be visible
         setVisible(true);
         // Sets the frame resizable property to false
         setResizable(false);
-        // Sets to dispose on close
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**

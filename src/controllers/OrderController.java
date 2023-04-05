@@ -32,9 +32,6 @@ import userinterfaces.ViewReceiptUI;
  */
 public class OrderController {
 
-    // Private/encapsulated constant for this class
-    private final static double TAX = 0.12;
-
     // Private/encapsulated properties of this class
     private BigDecimal[] itemCostsArray = new BigDecimal[6];
     private OrderUI orderUI;
@@ -148,7 +145,7 @@ public class OrderController {
     {
         jLabelItems.setText(buttonName);
         resetButtons();
-        setButtonNames(names);
+        setButtonNames(names, prices);
         setButtons(prices.length);
         changeItemPrices(prices);
     }
@@ -159,12 +156,12 @@ public class OrderController {
      *
      * @param names the array of names for each dish (based on category)
      */
-    private void setButtonNames(String[] names) {
+    private void setButtonNames(String[] names, BigDecimal[] prices) {
         JButton[] buttons = {jButtonItem1, jButtonItem2, jButtonItem3,
             jButtonItem4, jButtonItem5, jButtonItem6};
         // Loops through all the array of names
         for (int i = 0; i <= names.length - 1; i++) {
-            // Sets the button to the name with same index
+            // Sets the button to the item name with same index
             buttons[i].setText(names[i]);
         }
     }
@@ -244,7 +241,7 @@ public class OrderController {
         // Changes the text field to have the subtotal inside
         jTextSubTotal.setText(stringSubTotal);
         // Calculates the tax
-        double tax = (allCost * TAX);
+        double tax = (allCost * DataStructures.TAX);
         // Converts the tax to a String
         String stringTax = String.format("%.2f", tax);
         // Changes the text field to have the tax inside
@@ -272,7 +269,7 @@ public class OrderController {
         // Converts the amount to a double
         double customerAmount = Double.parseDouble(stringCustomerAmount);
         // Calculates the tax
-        double tax = (allCost * TAX);
+        double tax = (allCost * DataStructures.TAX);
         // Calculates the total for the order
         double total = allCost + tax;
         // If the total price of the order is more than what customer is paying
@@ -321,10 +318,9 @@ public class OrderController {
      * press of any item button based on the passed data from each button
      *
      * @param buttonName the text on the item button
-     * @param amount the amount to add per item
      * @param buttonNum the button number depending on the item button
      */
-    public void addItem(String buttonName, int amount, int buttonNum) {
+    public void addItem(String buttonName, int buttonNum) {
         // Sets the table model
         DefaultTableModel table = (DefaultTableModel) jTableOrder.getModel();
         // Loops through all rows of the table
@@ -348,12 +344,11 @@ public class OrderController {
                 return;         // Exits the method early
             }
         }
-
         // Creates a new vector
         Vector data = new Vector();
         // Adds the required data for the vector
         data.add(buttonName);
-        data.add(amount);
+        data.add(1);
         data.add(itemCostsArray[buttonNum]);
         // Adds the new row (item) with the created vector data
         table.addRow(data);
@@ -391,11 +386,12 @@ public class OrderController {
                     = (DefaultTableModel) jTableOrder.getModel();
             // Removes all the rows (items) in the table
             tableModel.setRowCount(0);
-            // Sets all the textbox fields to be empty
+            // Sets all the textbox fields to be starting values
             jTextFieldCustomerName.setText("");
             jTextFieldNumber.setText("");
             jTextFieldAddress.setText("");
             jTextAmount.setText("");
+            jTextChange.setText("0.00");
             // Sets all the combo box selections to nothing
             jComboBoxOrderType.setSelectedIndex(-1);
             jComboBoxPayment.setSelectedIndex(-1);
@@ -444,78 +440,27 @@ public class OrderController {
      * saves it to the database
      */
     public void pay() {
-        // Checks if customer's name isn't filled
-        if (jTextFieldCustomerName.getText() == null
-                || jTextFieldCustomerName.getText().equals("")) {
-            // Prompts user to fill in the customer's name
-            DataStructures.dialogs.output("Please enter the customer's name");
-            return;         // Exits the method early
-        }
-        // Checks if order type isn't selected
-        if (jComboBoxOrderType.getSelectedIndex() == -1
-                || jComboBoxOrderType.getSelectedItem() == null) {
-            // Prompts user to select an order type
-            DataStructures.dialogs.output("Please select the order type");
-            return;         // Exits the method early
-        }
-        // Checks if the customer's number isn't filled
-        if (jTextFieldNumber.getText() == null
-                || jTextFieldNumber.getText().equals("")) {
-            // Prompts user to fill in the customer's number
-            DataStructures.dialogs.output("Please enter the customer's number");
-            return;         // Exits the method early
-        }
-        // Checks if the customer's address isn't filled
-        if (jTextFieldAddress.getText() == null
-                || jTextFieldAddress.getText().equals("")) {
-            // Prompts user to fill in the customer's address
-            DataStructures.dialogs.output("Please enter customer's address");
-            return;         // Exits the method early
-        }
-        // Checks if the table is empty (no items added to order)
-        if (jTableOrder.getRowCount() == 0) {
-            // Prompts user to add items to the order
-            DataStructures.dialogs.output("Please add items to the order");
-            return;         // Exits the method early
-        }
-        // Checks if the payment method isn't selected
-        if (jComboBoxPayment.getSelectedIndex() == -1
-                || jComboBoxPayment.getSelectedItem() == null) {
-            // Prompts the user to select a payment method
-            DataStructures.dialogs.output("Please select the payment method");
-            return;         // Exits the method early
-        }
-        // Checks if the user inputted the amount the customer is paying with
-        if (jTextAmount.getText() == null
-                || jTextAmount.getText().equals("")) {
-            // Prompts the user to fill in the amount
-            DataStructures.dialogs.output("Please fill in the amount the "
-                    + "customer is paying with");
-            return;         // Exits the method early
-        }
-        // Passed all the tests order data tests...
-        boolean check = change();      // Calculates the change for the customer
-        // If didn't pass the check in the order
-        if (check == false) { // Exits the method early
+        // Ends method early if all fields are not filled
+        if (checkFields() == false) return;
+        // Calculates the change and checks if didn't passed the check
+        if (change() == false) { // Exits the method early
             // Tells user the customer is not paying enough
             DataStructures.dialogs.output("Customer is not paying enough");
-            return;
+            return; // Ends method early
         }
         // Gets all required cost data needed for the receipt
         double allCost = checkTableCost();  // Total cost of items on table
         String stringSubTotal = String.format("%.2f", allCost);
-        double tax = (allCost * TAX);       // Calculates the tax
+        double tax = (allCost * DataStructures.TAX);       // Calculates the tax
         String stringTax = String.format("%.2f", tax);
         double total = (allCost + tax);     // Calculates the total
         String stringTotal = String.format("%.2f", total);
         // Gets all the customer's data on the order for the receipt
-        String customerName = jTextFieldCustomerName.getText(); // Gets name
-        Object object = jComboBoxOrderType.getSelectedItem();
-        String orderType = object.toString();          // Gets order type
-        Object object1 = jComboBoxPayment.getSelectedItem();
-        String payment = object1.toString();           // Gets payment method
-        String number = jTextFieldNumber.getText();    // Gets customer's number
-        String address = jTextFieldAddress.getText();  // Gets customer address
+        String customerName = jTextFieldCustomerName.getText();
+        String orderType = jComboBoxOrderType.getSelectedItem().toString();      
+        String payment = jComboBoxPayment.getSelectedItem().toString();        
+        String number = jTextFieldNumber.getText();
+        String address = jTextFieldAddress.getText();
         // Generates the content of the receipt
         String receiptContent = receiptContent(customerName, orderType, number,
                 address, payment, stringTotal, stringTax, stringSubTotal);
@@ -527,7 +472,72 @@ public class OrderController {
         // Displays the receipt in the viewReceipt UI
         new ViewReceiptUI(receiptContent);
     }
-
+    
+    /**
+     * Checks to make sure all required fields (customer information) is filled,
+     * if not filled then prompts the user to fill the empty field and returns
+     * false, if all are filled then returns true
+     */
+    private boolean checkFields() {
+        // Checks if customer's name isn't filled
+        if (jTextFieldCustomerName.getText() == null
+                || jTextFieldCustomerName.getText().equals("")) {
+            // Prompts user to fill in the customer's name
+            jTextFieldCustomerName.requestFocus();
+            DataStructures.dialogs.output("Please enter the customer's name");
+            return false;
+        }
+        // Checks if order type isn't selected
+        if (jComboBoxOrderType.getSelectedIndex() == -1
+                || jComboBoxOrderType.getSelectedItem() == null) {
+            // Prompts user to select an order type
+            jComboBoxOrderType.requestFocus();
+            DataStructures.dialogs.output("Please select the order type");
+            return false;
+        }
+        // Checks if the customer's number isn't filled
+        if (jTextFieldNumber.getText() == null
+                || jTextFieldNumber.getText().equals("")) {
+            // Prompts user to fill in the customer's number
+            jTextFieldNumber.requestFocus();
+            DataStructures.dialogs.output("Please enter the customer's number");
+            return false;
+        }
+        // Checks if the customer's address isn't filled
+        if (jTextFieldAddress.getText() == null
+                || jTextFieldAddress.getText().equals("")) {
+            // Prompts user to fill in the customer's address
+            jTextFieldAddress.requestFocus();
+            DataStructures.dialogs.output("Please enter customer's address");
+            return false;
+        }
+        // Checks if the table is empty (no items added to order)
+        if (jTableOrder.getRowCount() == 0) {
+            // Prompts user to add items to the order
+            DataStructures.dialogs.output("Please add items to the order");
+            return false;
+        }
+        // Checks if the payment method isn't selected
+        if (jComboBoxPayment.getSelectedIndex() == -1
+                || jComboBoxPayment.getSelectedItem() == null) {
+            // Prompts the user to select a payment method
+            jComboBoxPayment.requestFocus();
+            DataStructures.dialogs.output("Please select the payment method");
+            return false;
+        }
+        // Checks if the user inputted the amount the customer is paying with
+        if (jTextAmount.getText() == null
+                || jTextAmount.getText().equals("")) {
+            // Prompts the user to fill in the amount
+            jTextAmount.requestFocus();
+            DataStructures.dialogs.output("Please fill in the amount the "
+                    + "customer is paying with");
+            return false;
+        }
+        // Passed all tests, returns true
+        return true;
+    }
+    
     /**
      * Generates the contents of a receipt with the proper receipt format
      * including all the purchased items and details of the order based on the
@@ -549,19 +559,21 @@ public class OrderController {
         // Sets the table model
         DefaultTableModel table = (DefaultTableModel) jTableOrder.getModel();
         // Formats the top portion of the receipt with customer data as a String
-        String content = "\tRestaurant\n"
-                + "\tAddress\n"
-                + "\t204-000-0000"
+        String content = "\tPanda Chinese Restaurant\n"
+                + "     Address: 3512 Roblin Blvd, Winnipeg, MB R3R 0C9\n"
+                + "\tTelephone: (204) 889-7123"
+                + "\n-------------------------------------------------------"
+                + "------"
                 + "\nCashier: " + DataStructures.cashierName
                 + "\nCustomer: " + customerName
                 + "\nOrder Type: " + orderType
                 + "\nNumber: " + number
                 + "\nAddress: " + address
                 + "\n-------------------------------------------------------"
-                + "---------"
+                + "------"
                 + "\nItem\t\tAmount\tPrice"
                 + "\n-------------------------------------------------------"
-                + "---------\n";
+                + "------\n";
         // Loops through all the rows (items) on the table
         for (int i = 0; i < jTableOrder.getRowCount(); i++) {
             // Gets name of row (item)
@@ -583,7 +595,7 @@ public class OrderController {
         }
         // Formats the bottom portion of the receipt with the costs of the order
         content += "--------------------------------------------------------"
-                + "--------"
+                + "-----"
                 + "\nPayment Method: " + payment
                 + "\nSub-Total:\t\t\t" + subTotal
                 + "\nTax:\t\t\t" + tax

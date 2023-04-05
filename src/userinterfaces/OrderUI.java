@@ -4,6 +4,7 @@ package userinterfaces;
 
 /** Required imports */
 import controllers.OrderController;
+import data.DataStructures;
 import data.OrderData;
 
 /**
@@ -51,18 +52,22 @@ public class OrderUI extends javax.swing.JFrame {
      * Sets the visual properties of the JFrame
      */
     private void setFrame() {
-        // Sets the title of the window
-        setTitle("Restaurant");
-        // Sets the size of the window
-        setSize(1455, 833);
-        // Sets the location to show up in the middle (null) 
+        // Sets the title of the frame
+        setTitle(DataStructures.TITLE);
+        // Sets the icon image of the frame
+        setIconImage(DataStructures.iconImage);
+        // Sets the size of the frame
+        setSize(1457, 830);
+        // Sets the location to show up in the middle
         this.setLocationRelativeTo(null);
         // Sets the frame to be visible
         setVisible(true);
         // Sets the frame resizable property to false
         setResizable(false);
-        // Sets to dispose on close
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        // Sets column widths
+        jTableOrder.getColumnModel().getColumn(0).setPreferredWidth(200);
+        jTableOrder.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jTableOrder.getColumnModel().getColumn(2).setPreferredWidth(50);
         // Sets item buttons to start with appetizers
         controller.setItems(
                 jButtonAppetizers.getText(),
@@ -287,6 +292,7 @@ public class OrderUI extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 570, 190));
 
+        jTableOrder.setFont(new java.awt.Font("Britannic Bold", 0, 14)); // NOI18N
         jTableOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -295,6 +301,7 @@ public class OrderUI extends javax.swing.JFrame {
                 "Item", "Amount", "Cost"
             }
         ));
+        jTableOrder.setRowHeight(23);
         jScrollPane1.setViewportView(jTableOrder);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 400, 440));
@@ -486,32 +493,32 @@ public class OrderUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAppetizersActionPerformed
 
     private void jButtonItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItem1ActionPerformed
-        controller.addItem(jButtonItem1.getText(), 1, 0);
+        controller.addItem(jButtonItem1.getText(), 0);
     }//GEN-LAST:event_jButtonItem1ActionPerformed
 
     private void jButtonItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItem3ActionPerformed
-        controller.addItem(jButtonItem3.getText(), 1, 2);
+        controller.addItem(jButtonItem3.getText(), 2);
     }//GEN-LAST:event_jButtonItem3ActionPerformed
 
     private void jButtonItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItem5ActionPerformed
-        controller.addItem(jButtonItem5.getText(), 1, 4);
+        controller.addItem(jButtonItem5.getText(), 4);
     }//GEN-LAST:event_jButtonItem5ActionPerformed
 
     private void jButtonItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItem6ActionPerformed
-        controller.addItem(jButtonItem6.getText(), 1, 5);
+        controller.addItem(jButtonItem6.getText(), 5);
     }//GEN-LAST:event_jButtonItem6ActionPerformed
 
     private void jButtonItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItem4ActionPerformed
-        controller.addItem(jButtonItem4.getText(), 1, 3);
+        controller.addItem(jButtonItem4.getText(), 3);
     }//GEN-LAST:event_jButtonItem4ActionPerformed
 
     private void jButtonItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonItem2ActionPerformed
-        controller.addItem(jButtonItem2.getText(), 1, 1);
+        controller.addItem(jButtonItem2.getText(), 1);
     }//GEN-LAST:event_jButtonItem2ActionPerformed
 
     private void jButtonSoupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSoupsActionPerformed
         controller.setItems(
-                jButtonAppetizers.getText(),
+                jButtonSoups.getText(),
                 OrderData.SOUP_NAMES,
                 OrderData.SOUP_PRICES);
     }//GEN-LAST:event_jButtonSoupsActionPerformed
