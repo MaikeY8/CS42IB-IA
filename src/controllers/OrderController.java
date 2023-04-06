@@ -57,9 +57,9 @@ public class OrderController {
     private JComboBox jComboBoxOrderType;
 
     /**
-     * A constructor method which sets the class properties. Done by connecting
-     * the passed in parameters to the encapsulated properties (global variables
-     * of this class)
+     * A constructor method which sets the properties of the UI and sets class 
+     * properties. Done by connecting the passed in parameters to the 
+     * encapsulated properties (global variables of this class).
      *
      * @param orderUI the UI for creating a new order and generating a receipt
      * @param jTableOrder the table where all the ordered items are displayed
@@ -120,6 +120,22 @@ public class OrderController {
         this.jTextFieldNumber = jTextFieldNumber;
         this.jTextFieldAddress = jTextFieldAddress;
         this.jComboBoxOrderType = jComboBoxOrderType;
+        // Sets the title of the frame
+        orderUI.setTitle(DataStructures.TITLE);
+        // Sets the icon image of the frame
+        orderUI.setIconImage(DataStructures.iconImage);
+        // Sets the size of the frame
+        orderUI.setSize(1457, 830);
+        // Sets the location to show up in the middle
+        orderUI.setLocationRelativeTo(null);
+        // Sets the frame to be visible
+        orderUI.setVisible(true);
+        // Sets the frame resizable property to false
+        orderUI.setResizable(false);
+        // Sets column widths
+        jTableOrder.getColumnModel().getColumn(0).setPreferredWidth(200);
+        jTableOrder.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jTableOrder.getColumnModel().getColumn(2).setPreferredWidth(50);
         Arrays.fill(itemCostsArray, BigDecimal.ZERO);
     }
 

@@ -20,32 +20,14 @@ public class ReceiptUI extends javax.swing.JFrame {
     private ReceiptController controller;
 
     /**
-     * Creates new form ReceiptsUI and sets the properties of the frame
+     * Creates new form ReceiptsUI and displays all the receipts in the list
      */
     public ReceiptUI() {
         initComponents();
-        setFrame();
-        controller = new ReceiptController(receiptList,
+        controller = new ReceiptController(this, receiptList,
                 jComboBoxSearch, jTextSearch);
+        // Displays the list of stored receipts in the collection
         DataStructures.receipts.displayAll(receiptList);
-    }
-
-    /**
-     * Sets the visual properties of the JFrame
-     */
-    private void setFrame() {
-        // Sets the title of the frame
-        setTitle(DataStructures.TITLE);
-        // Sets the icon image of the frame
-        setIconImage(DataStructures.iconImage);
-        // Sets the size of the frame
-        setSize(507, 760);
-        // Sets the location to show up in the middle
-        this.setLocationRelativeTo(null);
-        // Sets the frame to be visible
-        setVisible(true);
-        // Sets the frame resizable property to false
-        setResizable(false);
     }
 
     /**

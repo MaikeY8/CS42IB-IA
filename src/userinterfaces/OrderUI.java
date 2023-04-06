@@ -4,7 +4,6 @@ package userinterfaces;
 
 /** Required imports */
 import controllers.OrderController;
-import data.DataStructures;
 import data.OrderData;
 
 /**
@@ -45,29 +44,6 @@ public class OrderUI extends javax.swing.JFrame {
                 jTextFieldNumber,
                 jTextFieldAddress,
                 jComboBoxOrderType);
-        setFrame();
-    }
-
-    /**
-     * Sets the visual properties of the JFrame
-     */
-    private void setFrame() {
-        // Sets the title of the frame
-        setTitle(DataStructures.TITLE);
-        // Sets the icon image of the frame
-        setIconImage(DataStructures.iconImage);
-        // Sets the size of the frame
-        setSize(1457, 830);
-        // Sets the location to show up in the middle
-        this.setLocationRelativeTo(null);
-        // Sets the frame to be visible
-        setVisible(true);
-        // Sets the frame resizable property to false
-        setResizable(false);
-        // Sets column widths
-        jTableOrder.getColumnModel().getColumn(0).setPreferredWidth(200);
-        jTableOrder.getColumnModel().getColumn(1).setPreferredWidth(50);
-        jTableOrder.getColumnModel().getColumn(2).setPreferredWidth(50);
         // Sets item buttons to start with appetizers
         controller.setItems(
                 jButtonAppetizers.getText(),

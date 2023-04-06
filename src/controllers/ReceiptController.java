@@ -8,9 +8,9 @@ import data.Receipt;
 import java.awt.List;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import userinterfaces.MenuUI;
+import userinterfaces.ReceiptUI;
 import userinterfaces.ViewReceiptUI;
 
 /**
@@ -31,8 +31,6 @@ public class ReceiptController {
     private List receiptList;
     private JComboBox jComboBoxSearch;
     private JTextField jTextSearch;
-    private JTextArea jTextArea;
-    private String receiptContent;
 
     /**
      * Constructor method that adds the passed receipt to the collection
@@ -46,20 +44,11 @@ public class ReceiptController {
     /**
      * A constructor method which sets the properties of the UI and sets class 
      * properties.Done by connecting the passed in parameters to the 
- encapsulated properties (global variables of this class).
+     * encapsulated properties (global variables of this class).
      * 
      * @param viewReceiptUI the viewReceiptUI user interface
-     * @param jTextArea the text area for the receipt content
-     * @param receiptContent the receipt content
      */
-    public ReceiptController(
-            ViewReceiptUI viewReceiptUI,
-            JTextArea     jTextArea,
-            String        receiptContent) {
-        this.viewReceiptUI = viewReceiptUI;
-        this.jTextArea     = jTextArea;
-        // Displays the receipt contents
-        jTextArea.setText(receiptContent);
+    public ReceiptController(ViewReceiptUI viewReceiptUI) {
         // Sets the title of the frame
         viewReceiptUI.setTitle(DataStructures.TITLE);
         // Sets the icon image of the frame
@@ -75,19 +64,35 @@ public class ReceiptController {
     }
     
     /**
-     * A constructor method which sets the class properties. Done by connecting 
-     * the passed in parameters to the encapsulated properties (global variables
-     * of this class).
+     * A constructor method which sets the properties of the UI and sets class 
+     * properties.Done by connecting the passed in parameters to the 
+     * encapsulated properties (global variables of this class).
      * 
+     * @param receiptUI the receiptUI
      * @param receiptList the list that displays all the receipts in receipts UI
      * @param jComboBoxSearch the search combo box
      * @param jTextSearch the search text box field
      */
-    public ReceiptController(List receiptList, JComboBox jComboBoxSearch,
+    public ReceiptController(
+            ReceiptUI  receiptUI, 
+            List       receiptList, 
+            JComboBox  jComboBoxSearch,
             JTextField jTextSearch) {
-        this.receiptList = receiptList;
+        this.receiptList     = receiptList;
         this.jComboBoxSearch = jComboBoxSearch;
-        this.jTextSearch = jTextSearch;
+        this.jTextSearch     = jTextSearch;
+        // Sets the title of the frame
+        receiptUI.setTitle(DataStructures.TITLE);
+        // Sets the icon image of the frame
+        receiptUI.setIconImage(DataStructures.iconImage);
+        // Sets the size of the frame
+        receiptUI.setSize(507, 760);
+        // Sets the location to show up in the middle
+        receiptUI.setLocationRelativeTo(null);
+        // Sets the frame to be visible
+        receiptUI.setVisible(true);
+        // Sets the frame resizable property to false
+        receiptUI.setResizable(false);
     }
     
     /**

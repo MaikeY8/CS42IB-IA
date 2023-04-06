@@ -25,7 +25,9 @@ public class ViewReceiptUI extends javax.swing.JFrame {
      */
     public ViewReceiptUI(String receiptContent) {
         initComponents();
-        controller = new ReceiptController(this, jTextArea, receiptContent);
+        // Displays the receipt contents
+        jTextArea.setText(receiptContent);
+        controller = new ReceiptController(this);
     }
 
     /**
