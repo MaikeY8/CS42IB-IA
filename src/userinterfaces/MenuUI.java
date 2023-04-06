@@ -2,9 +2,8 @@
 /** Required package class namespace */
 package userinterfaces;
 
-/** Required imports */
+/** Required import */
 import controllers.MenuController;
-import data.DataStructures;
 
 /**
  * MenuUI.java - the user interface view that appears and acts like a menu for 
@@ -23,26 +22,7 @@ public class MenuUI extends javax.swing.JFrame {
      */
     public MenuUI() {
         initComponents();
-        setFrame();
         controller = new MenuController(this);
-    }
-    
-    /**
-     * Sets the visual properties of the JFrame
-     */
-    private void setFrame() {
-        // Sets the title of the frame
-        setTitle(DataStructures.TITLE);
-        // Sets the icon image of the frame
-        setIconImage(DataStructures.iconImage);
-        // Sets the size of the frame
-        setSize(267, 260);
-        // Sets the location to show up in the middle
-        this.setLocationRelativeTo(null);
-        // Sets the frame to be visible
-        setVisible(true);
-        // Sets the frame resizable property to false
-        setResizable(false);
     }
 
     /**

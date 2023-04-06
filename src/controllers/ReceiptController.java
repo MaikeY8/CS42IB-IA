@@ -8,6 +8,7 @@ import data.Receipt;
 import java.awt.List;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import userinterfaces.MenuUI;
 import userinterfaces.ViewReceiptUI;
@@ -30,6 +31,8 @@ public class ReceiptController {
     private List receiptList;
     private JComboBox jComboBoxSearch;
     private JTextField jTextSearch;
+    private JTextArea jTextArea;
+    private String receiptContent;
 
     /**
      * Constructor method that adds the passed receipt to the collection
@@ -41,12 +44,34 @@ public class ReceiptController {
     }
     
     /**
-     * Constructor method that sets the viewReceiptUI property of the class
+     * A constructor method which sets the properties of the UI and sets class 
+     * properties.Done by connecting the passed in parameters to the 
+ encapsulated properties (global variables of this class).
      * 
-     * @param viewReceiptUI the viuewReceiptUI class
+     * @param viewReceiptUI the viewReceiptUI user interface
+     * @param jTextArea the text area for the receipt content
+     * @param receiptContent the receipt content
      */
-    public ReceiptController(ViewReceiptUI viewReceiptUI) {
+    public ReceiptController(
+            ViewReceiptUI viewReceiptUI,
+            JTextArea     jTextArea,
+            String        receiptContent) {
         this.viewReceiptUI = viewReceiptUI;
+        this.jTextArea     = jTextArea;
+        // Displays the receipt contents
+        jTextArea.setText(receiptContent);
+        // Sets the title of the frame
+        viewReceiptUI.setTitle(DataStructures.TITLE);
+        // Sets the icon image of the frame
+        viewReceiptUI.setIconImage(DataStructures.iconImage);
+        // Sets the size of the frame
+        viewReceiptUI.setSize(387, 740);
+        // Sets the location to show up in the middle
+        viewReceiptUI.setLocationRelativeTo(null);
+        // Sets the frame to be visible
+        viewReceiptUI.setVisible(true);
+        // Sets the frame resizable property to false
+        viewReceiptUI.setResizable(false);
     }
     
     /**

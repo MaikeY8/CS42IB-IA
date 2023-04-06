@@ -19,6 +19,7 @@ import userinterfaces.MenuUI;
  */
 public class LoginController {
 
+    // Private/encapsulated class properties
     private LoginUI loginUI;
     private JTextField nameTextbox;
     private JTextField passwordTextbox;

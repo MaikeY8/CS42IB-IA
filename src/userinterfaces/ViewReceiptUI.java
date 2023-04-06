@@ -19,32 +19,13 @@ public class ViewReceiptUI extends javax.swing.JFrame {
     private ReceiptController controller;
     
     /**
+     * Creates a new ViewReceiptUI form and connects to the receipt controller
      * 
-     * @param receiptContent 
+     * @param receiptContent the contents of the receipt
      */
     public ViewReceiptUI(String receiptContent) {
         initComponents();
-        setFrame();
-        jTextArea.setText(receiptContent);
-        controller = new ReceiptController(this);
-    }
-    
-    /**
-     * Sets the visual properties of the JFrame
-     */
-    private void setFrame() {
-        // Sets the title of the frame
-        setTitle(DataStructures.TITLE);
-        // Sets the icon image of the frame
-        setIconImage(DataStructures.iconImage);
-        // Sets the size of the frame
-        setSize(387, 740);
-        // Sets the location to show up in the middle
-        this.setLocationRelativeTo(null);
-        // Sets the frame to be visible
-        setVisible(true);
-        // Sets the frame resizable property to false
-        setResizable(false);
+        controller = new ReceiptController(this, jTextArea, receiptContent);
     }
 
     /**

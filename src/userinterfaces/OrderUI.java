@@ -21,7 +21,7 @@ public class OrderUI extends javax.swing.JFrame {
     private OrderController controller;
 
     /**
-     * Creates new form OrderUI and sets the properties of the frame
+     * Creates new form OrderUI and connects to the order controller
      */
     public OrderUI() {
         initComponents();
