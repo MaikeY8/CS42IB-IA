@@ -399,7 +399,6 @@ public class OrderUI extends javax.swing.JFrame {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonItem1.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonItem1.setEnabled(false);
         jButtonItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonItem1ActionPerformed(evt);
@@ -408,7 +407,6 @@ public class OrderUI extends javax.swing.JFrame {
         jPanel5.add(jButtonItem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 200, 200));
 
         jButtonItem3.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonItem3.setEnabled(false);
         jButtonItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonItem3ActionPerformed(evt);
@@ -417,7 +415,6 @@ public class OrderUI extends javax.swing.JFrame {
         jPanel5.add(jButtonItem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 200, 200));
 
         jButtonItem5.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonItem5.setEnabled(false);
         jButtonItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonItem5ActionPerformed(evt);
@@ -426,7 +423,6 @@ public class OrderUI extends javax.swing.JFrame {
         jPanel5.add(jButtonItem5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 200, 200));
 
         jButtonItem6.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonItem6.setEnabled(false);
         jButtonItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonItem6ActionPerformed(evt);
@@ -435,7 +431,6 @@ public class OrderUI extends javax.swing.JFrame {
         jPanel5.add(jButtonItem6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 200, 200));
 
         jButtonItem4.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonItem4.setEnabled(false);
         jButtonItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonItem4ActionPerformed(evt);
@@ -444,7 +439,6 @@ public class OrderUI extends javax.swing.JFrame {
         jPanel5.add(jButtonItem4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 200, 200));
 
         jButtonItem2.setFont(new java.awt.Font("Britannic Bold", 0, 18)); // NOI18N
-        jButtonItem2.setEnabled(false);
         jButtonItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonItem2ActionPerformed(evt);
@@ -453,6 +447,7 @@ public class OrderUI extends javax.swing.JFrame {
         jPanel5.add(jButtonItem2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 200, 200));
 
         jLabelItems.setFont(new java.awt.Font("Britannic Bold", 0, 48)); // NOI18N
+        jLabelItems.setText("Categories:");
         jPanel5.add(jLabelItems, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 410, 120));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 10, 430, 770));
