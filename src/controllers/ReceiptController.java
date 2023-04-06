@@ -50,7 +50,9 @@ public class ReceiptController {
     }
     
     /**
-     * Constructor method that sets the receiptList class properties
+     * A constructor method which sets the class properties. Done by connecting 
+     * the passed in parameters to the encapsulated properties (global variables
+     * of this class).
      * 
      * @param receiptList the list that displays all the receipts in receipts UI
      * @param jComboBoxSearch the search combo box
