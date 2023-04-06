@@ -26,7 +26,7 @@ public class Receipts implements Serializable {
      * Default constructor method that instantiates the class
      */
     public Receipts() {
-        list = new LinkedList<Receipt>();
+        list = new LinkedList<>();
     }
 
     /**
