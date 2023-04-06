@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 public class Receipt implements Serializable {
     
-    /** the global properties of this receipt object */
+    /** The global properties of this receipt object */
     private final String customerName;
     private final String orderType;
     private final String number;
