@@ -6,6 +6,7 @@ package controllers;
  */
 import data.DataStructures;
 import data.Receipt;
+import java.awt.Dialog;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Vector;
@@ -266,8 +267,13 @@ public class OrderController {
         double allCost = checkTableCost();
         // Gets the amount the customer is paying with
         String stringCustomerAmount = jTextAmount.getText();
-        // Converts the amount to a double
-        double customerAmount = Double.parseDouble(stringCustomerAmount);
+        double customerAmount = 0;
+        try {
+            // Converts the amount to a double
+            customerAmount = Double.parseDouble(stringCustomerAmount);
+        } catch (NumberFormatException e) {
+            DataStructures.dialogs.output("Invalid amount");
+        }
         // Calculates the tax
         double tax = (allCost * DataStructures.TAX);
         // Calculates the total for the order
