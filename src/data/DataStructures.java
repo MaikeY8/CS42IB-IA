@@ -37,12 +37,12 @@ public class DataStructures {
     public static final String PASSWORD    = "Panda123";
     public static final double TAX         = 0.12;
     
-    public static Icon icon;
-    public static Image iconImage;
-    
     public static final int     BY_NAME    = 1;
     public static final int     BY_NUMBER  = 2;
     public static final int     BY_ADDRESS = 3;
+    
+    public static Icon icon;
+    public static Image iconImage;
     
     public static File                  receiptData;
     public static String                cashierName;
