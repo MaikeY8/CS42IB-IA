@@ -1,9 +1,7 @@
 /** Required package class namespace */
 package data;
 
-/**
- * Required imports
- */
+/** Required imports */
 import io.Dialogs;
 import io.FileHandler;
 import java.awt.Color;
