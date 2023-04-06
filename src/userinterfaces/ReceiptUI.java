@@ -1,9 +1,7 @@
 /** Required package class namespace */
 package userinterfaces;
 
-/**
- * Required imports
- */
+/** Required imports */
 import controllers.ReceiptController;
 import data.DataStructures;
 
