@@ -3,7 +3,7 @@
 package userinterfaces;
 
 /** Required imports */
-import controllers.ViewReceiptController;
+import controllers.ReceiptController;
 import data.DataStructures;
 
 /**
@@ -16,7 +16,7 @@ import data.DataStructures;
 public class ViewReceiptUI extends javax.swing.JFrame {
     
     // Connection to an encapsulated controller for this user interface
-    private ViewReceiptController controller;
+    private ReceiptController controller;
     
     /**
      * 
@@ -26,7 +26,7 @@ public class ViewReceiptUI extends javax.swing.JFrame {
         initComponents();
         setFrame();
         jTextArea.setText(receiptContent);
-        controller = new ViewReceiptController(this);
+        controller = new ReceiptController(this);
     }
     
     /**

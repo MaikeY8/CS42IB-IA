@@ -13,7 +13,7 @@ import userinterfaces.MenuUI;
 import userinterfaces.ViewReceiptUI;
 
 /**
- * ViewReceiptController.java - this class is connected to the view receipt and 
+ * ReceiptController.java - this class is connected to the view receipt and 
  * receipts user interface for viewing all the receipts and the contents of each
  * receipt. This controller class stores all the methods and code to be run that
  * is associated with the view receipt UI and the receipts UI. This controller 
@@ -23,7 +23,7 @@ import userinterfaces.ViewReceiptUI;
  * @author Wen Pei (Michael) Yan
  * @since Feb, 2023
  */
-public class ViewReceiptController {
+public class ReceiptController {
     
     // Private/encapsulated property of this class
     private ViewReceiptUI viewReceiptUI;
@@ -36,7 +36,7 @@ public class ViewReceiptController {
      * 
      * @param receipt the receipt object 
      */
-    public ViewReceiptController(Receipt receipt) {
+    public ReceiptController(Receipt receipt) {
         DataStructures.receipts.addToLinkedList(receipt);
     }
     
@@ -45,7 +45,7 @@ public class ViewReceiptController {
      * 
      * @param viewReceiptUI the viuewReceiptUI class
      */
-    public ViewReceiptController(ViewReceiptUI viewReceiptUI) {
+    public ReceiptController(ViewReceiptUI viewReceiptUI) {
         this.viewReceiptUI = viewReceiptUI;
     }
     
@@ -56,7 +56,7 @@ public class ViewReceiptController {
      * @param jComboBoxSearch the search combo box
      * @param jTextSearch the search text box field
      */
-    public ViewReceiptController(List receiptList, JComboBox jComboBoxSearch,
+    public ReceiptController(List receiptList, JComboBox jComboBoxSearch,
             JTextField jTextSearch) {
         this.receiptList = receiptList;
         this.jComboBoxSearch = jComboBoxSearch;

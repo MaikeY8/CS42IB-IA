@@ -474,7 +474,7 @@ public class OrderController {
         Receipt receipt = new Receipt(
                 customerName, orderType, number, address, receiptContent);
         // Adds the receipt to the collection (Receipts)
-        new ViewReceiptController(receipt);
+        new ReceiptController(receipt);
         // Displays the receipt in the viewReceipt UI
         new ViewReceiptUI(receiptContent);
     }

@@ -4,7 +4,7 @@ package userinterfaces;
 /**
  * Required imports
  */
-import controllers.ViewReceiptController;
+import controllers.ReceiptController;
 import data.DataStructures;
 
 /**
@@ -17,7 +17,7 @@ import data.DataStructures;
 public class ReceiptUI extends javax.swing.JFrame {
 
     // Connection to an encapsulated controller for this user interface
-    private ViewReceiptController controller;
+    private ReceiptController controller;
 
     /**
      * Creates new form ReceiptsUI and sets the properties of the frame
@@ -25,7 +25,7 @@ public class ReceiptUI extends javax.swing.JFrame {
     public ReceiptUI() {
         initComponents();
         setFrame();
-        controller = new ViewReceiptController(receiptList,
+        controller = new ReceiptController(receiptList,
                 jComboBoxSearch, jTextSearch);
         DataStructures.receipts.displayAll(receiptList);
     }
