@@ -1,9 +1,7 @@
 /** Required package class namespace */
 package controllers;
 
-/**
- * Required imports
- */
+/** Required imports */
 import data.DataStructures;
 import data.Receipt;
 import java.math.BigDecimal;
