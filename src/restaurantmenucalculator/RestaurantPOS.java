@@ -8,12 +8,12 @@ import data.DataStructures;
 import userinterfaces.LoginUI;
 
 /**
- * RestaurantMenuCalculator - the main class for this application
+ * RestaurantPOS - the main class for this application
  * 
  * @author Wen Pei (Michael) Yan
  * @since Feb, 2023
  */
-public class RestaurantMenuCalculator {
+public class RestaurantPOS {
 
     /**
      * The main method of the application that instantiates the DataStructures
