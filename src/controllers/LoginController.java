@@ -24,21 +24,33 @@ public class LoginController {
     private JTextField passwordTextbox;
     
     /**
-     * A constructor method which sets the class properties. Done by connecting 
-     * the passed in parameters to the encapsulated properties (global variables
-     * of this class).
+     * A constructor method which sets the properties of the UI and sets class 
+     * properties. Done by connecting the passed in parameters to the 
+     * encapsulated properties (global variables of this class).
      * 
      * @param loginUI the user interface for the user to login with
      * @param nameTextbox the text box field for the user's name
      * @param passwordTextbox the text box field for the password
      */
     public LoginController(
-            LoginUI loginUI,
+            LoginUI    loginUI,
             JTextField nameTextbox,
             JTextField passwordTextbox) {
-        this.loginUI = loginUI;
-        this.nameTextbox = nameTextbox;
+        this.loginUI         = loginUI;
+        this.nameTextbox     = nameTextbox;
         this.passwordTextbox = passwordTextbox;
+        // Sets the title of the frame
+        loginUI.setTitle(DataStructures.TITLE);
+        // Sets the icon image of the frame
+        loginUI.setIconImage(DataStructures.iconImage);
+        // Sets the size of the frame
+        loginUI.setSize(207, 250);
+        // Sets the location to show up in the middle
+        loginUI.setLocationRelativeTo(null);
+        // Sets the frame to be visible
+        loginUI.setVisible(true);
+        // Sets the frame resizable property to false
+        loginUI.setResizable(false);
     }
 
     /**
